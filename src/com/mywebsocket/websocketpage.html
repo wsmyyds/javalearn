@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WebSocket 客户端</title>
+</head>
+<body>
+<div id="sse">
+
+    <input id="WebSocketServer" value="ws://localhost:8888">
+    <button onclick="getConnection()">连接WebSocket</button>
+    <button onclick="closeConnection()">关闭WebSocket</button>
+    </br>
+    <input id="message" value="一条消息">
+    <button onclick="sendMessage()">发送</button>
+    </br>
+    <div id="messageBox">
+        <div><span>welcome！</span></div>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+
+    let ws = null;
+    let messageBox = document.getElementById("messageBox");
+
+    function getConnection() {
+        if (!"WebSocket" in window) {
+            alert("您的浏览器不支持 WebSocket!");
+        }
+        ws = new WebSocket(document.getElementById("WebSocketServer").value);
+        ws.onmessage = function (evt) {
+
+            //alert("数据接收" + evt.data);
+            let str = '<div><span>' + evt.data + '</span></div>';
+            messageBox.innerHTML = messageBox.innerHTML + str;
+        };
+        ws.onerror = function () {
+            alert("出错了...")
+        }
+        ws.onclose = function () {
+            // 关闭 websocket
+            alert("连接已关闭...");
+
+        };
+    }
+
+    function sendMessage() {
+        if (ws == null || ws.readyState === 3) {
+            alert("请先连接到websocketServer");
+            return;
+        }
+        //console.log(ws.readyState)
+        ws.send(document.getElementById("message").value)
+        document.getElementById("message").value = '';
+    }
+
+    //注意：fun名不能是close,会没反应
+    function closeConnection() {
+        ws.close(1000);
+    }
+
+</script>
+
+</html>

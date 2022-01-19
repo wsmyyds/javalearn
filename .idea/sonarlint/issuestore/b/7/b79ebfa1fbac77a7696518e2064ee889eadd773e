@@ -1,0 +1,10 @@
+
+M	java:S106"9Replace this use of System.out or System.err by a logger.(™ÀÅ7
+^
+java:S2133"CRemove this object instantiation and use "TestClass.class" instead.(¯« Óÿÿÿÿÿ
+N	java:S106"9Replace this use of System.out or System.err by a logger.(‚ûìÒ
+M	java:S106"9Replace this use of System.out or System.err by a logger.(‡ğÕL
+N	java:S106 "9Replace this use of System.out or System.err by a logger.(­­İû
+S	java:S106!"9Replace this use of System.out or System.err by a logger.(éÌ´Éûÿÿÿÿ
+M	java:S106""9Replace this use of System.out or System.err by a logger.(¥ÖC
+S	java:S106)"9Replace this use of System.out or System.err by a logger.(æåğ·ÿÿÿÿÿ
